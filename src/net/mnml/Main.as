@@ -2,6 +2,7 @@ package net.mnml
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import net.mnml.worlds.Title;
 	
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
@@ -23,7 +24,6 @@ package net.mnml
 			
 			// Create a Bank world
 			FP.world = new OutsideWorld();
-			
 		}
 		
 		override public function init():void

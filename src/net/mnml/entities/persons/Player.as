@@ -1,11 +1,14 @@
 package net.mnml.entities.persons 
 {
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import net.flashpunk.utils.MathPlus;
 	import net.flashpunk.FP;
+	import net.mnml.entities.structures.WallToNewWorld;
+	import net.mnml.entities.ui.Fade;
 	
 	import net.mnml.entities.Reticle;
 	
@@ -20,17 +23,36 @@ package net.mnml.entities.persons
 		/* Variables */
 		/** @private */ private var _reticle	:Reticle;
 		
-		public function Player() 
+		private var _goingToNextWorld			:Boolean;
+		
+		public function Player(x:uint, y:uint) 
 		{
-			_xMaxVel = 9;
-			_yMaxVel = 6;
+			this.x = x;
+			this.y = y;
+			_xMaxVel = 6;
+			_yMaxVel = 4;
 			_accel = 0.75;
 			_decel = 2;
 			
 			_reticle = new Reticle();
 			FP.world.add(_reticle);
 			
-			graphic = new Image(PLAYER_SPRITEMAP);
+			_spriteMap = new Spritemap(PLAYER_SPRITEMAP, 64, 112);
+			
+			_spriteMap.add("normal", [0]);
+			_spriteMap.add("down", [1]);
+			_spriteMap.add("up", [2]);
+			_spriteMap.add("left", [3]);
+			_spriteMap.add("right", [4]);
+			
+			graphic = _spriteMap;
+			_spriteMap.play("normal", true);
+			
+			graphic = _spriteMap;
+			setHitbox(64, 112);
+			type = "Player";
+			
+			_goingToNextWorld = false;
 		}
 		
 		override public function update():void 
@@ -38,6 +60,8 @@ package net.mnml.entities.persons
 			updateMovement();
 			super.update();
 			
+			if (collide("WallToNewWorld", x, y) != null && !_goingToNextWorld)
+				gotoNextWorld(collide("WallToNewWorld", x, y));
 		}
 		
 		private function updateMovement():void
@@ -105,30 +129,33 @@ package net.mnml.entities.persons
 			}
 		}
 		
-		/*
 		override protected function updateAnimation():void 
 		{
 			super.updateAnimation();
+			var jumpX:Number = (Math.random() * 2 - 1);
+			var jumpY:Number = (Math.random() * 2 - 1);
 			
-			if (Input.mouseX < x + this.width * 0.5)
-			{
-				if (_xVel > 0)
-					_spriteMap.play("leftRobberBackMove");
-				else if (_xVel < 0 || _yVel != 0)
-					_spriteMap.play("leftRobberForMove");
-				else
-					_spriteMap.play("leftRobberStand");
-			}
+			_spriteMap.x += jumpX;
+			_spriteMap.y += jumpY;
+			
+			
+			if (_yVel > 0)
+				_spriteMap.play("down");
+			else if (_yVel < 0)
+				_spriteMap.play("up");
+			else if (_xVel > 0)
+				_spriteMap.play("right");
+			else if (_xVel < 0)
+				_spriteMap.play("left");
 			else
-			{
-				if (_xVel < 0)
-					_spriteMap.play("rightRobberBackMove");
-				else if (_xVel > 0 || _yVel != 0)
-					_spriteMap.play("rightRobberForMove");
-				else
-					_spriteMap.play("rightRobberStand");
-			}
+				_spriteMap.play("normal");
 		}
-		*/
+		
+		private function gotoNextWorld(e:Entity):void
+		{
+			_goingToNextWorld = true;
+			var worldStr : String = (e as WallToNewWorld).worldStr;
+			FP.world.add(new Fade(worldStr));
+		}
 	}
 }
