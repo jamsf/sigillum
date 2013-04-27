@@ -2,6 +2,7 @@ package net.mnml.worlds
 {
 	import net.flashpunk.World;
 	import net.flashpunk.debug.Console;
+	import net.mnml.entities.structures.Wall;
 	
 	import net.mnml.entities.Reticle;
 	import net.mnml.entities.persons.Player;
@@ -10,10 +11,10 @@ package net.mnml.worlds
 	 * ...
 	 * @author jams
 	 */
-	public class MnmlWorld extends World 
+	public class OutsideWorld extends World 
 	{
 		
-		public function MnmlWorld() 
+		public function OutsideWorld() 
 		{
 			
 		}
@@ -23,6 +24,7 @@ package net.mnml.worlds
 			super.begin();
 			
 			add(new Player());
+			add(new Wall(128, 128));
 		}
 		
 		override public function update():void 

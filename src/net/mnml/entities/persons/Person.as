@@ -25,14 +25,13 @@ package net.mnml.entities.persons
 		{
 			_xVel = 0;
 			_yVel = 0;
-			
+			setHitbox(64, 64);
 		}
 		
 		override public function update():void 
 		{
 			super.update();
-			x += _xVel;
-			y += _yVel;
+			this.moveBy(_xVel, _yVel, new Array("Structure", "Wall"), false);
 			updateAnimation();
 		}
 		

@@ -9,7 +9,7 @@ package net.mnml
 	import net.flashpunk.utils.Key;
 	
 	
-	import net.mnml.worlds.MnmlWorld;
+	import net.mnml.worlds.OutsideWorld;
 
 	/**
 	 * ...
@@ -22,8 +22,7 @@ package net.mnml
 			super(800, 600, 60, false);
 			
 			// Create a Bank world
-			FP.world = new MnmlWorld();
-			
+			FP.world = new OutsideWorld();
 			
 		}
 		
