@@ -1,6 +1,7 @@
 package net.mnml.worlds 
 {
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.World;
 	import net.flashpunk.FP;
 	import net.mnml.entities.ui.TitleText;
@@ -11,8 +12,6 @@ package net.mnml.worlds
 	 */
 	public class Title extends World 
 	{
-		
-		
 		private var _titleTimer 	:uint;
 		private var _showingTitle	:Boolean;
 		private var _title			:TitleText;
@@ -22,10 +21,12 @@ package net.mnml.worlds
 			_titleTimer = 60 * 3;
 			_showingTitle = false;
 			
-			
 			_title = new TitleText(500, 500);
 			_title.setAlpha(0);
 			add(_title);
+			
+			//FP.musicController.heatless.loop();
+			FP.screen.color = 0xFF000000;
 		}
 		
 		override public function update():void 

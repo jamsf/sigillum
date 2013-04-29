@@ -31,7 +31,7 @@ package net.mnml.entities.persons
 		override public function update():void 
 		{
 			super.update();
-			this.moveBy(_xVel, _yVel, new Array("Structure", "Wall"), false);
+			this.moveBy(_xVel, _yVel, new Array("Structure", "Wall", "NPC"), false);
 			updateAnimation();
 		}
 		
@@ -39,5 +39,7 @@ package net.mnml.entities.persons
 		{
 			
 		}
+		
+		public function get yVel():Number { return _yVel; }
 	}
 }

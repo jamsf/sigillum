@@ -11,6 +11,7 @@
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
+	import net.mnml.entities.MusicController;
 
 	import net.flashpunk.debug.Console;
 	import net.flashpunk.tweens.misc.Alarm;
@@ -21,6 +22,9 @@
 	 */
 	public class FP 
 	{
+		// Added Music Controller
+		public static var musicController	:MusicController = new MusicController();
+		
 		/**
 		 * The FlashPunk major version.
 		 */

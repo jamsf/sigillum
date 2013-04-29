@@ -24,6 +24,8 @@ package net.mnml.entities.persons
 		/** @private */ private var _reticle	:Reticle;
 		
 		private var _goingToNextWorld			:Boolean;
+		private var _halfScale					:Boolean;
+		public var unlockCamera					:Boolean;
 		
 		public function Player(x:uint, y:uint) 
 		{
@@ -34,8 +36,7 @@ package net.mnml.entities.persons
 			_accel = 0.75;
 			_decel = 2;
 			
-			_reticle = new Reticle();
-			FP.world.add(_reticle);
+			unlockCamera = false;
 			
 			_spriteMap = new Spritemap(PLAYER_SPRITEMAP, 64, 112);
 			
@@ -135,6 +136,12 @@ package net.mnml.entities.persons
 			var jumpX:Number = (Math.random() * 2 - 1);
 			var jumpY:Number = (Math.random() * 2 - 1);
 			
+			if (_halfScale)
+			{
+				jumpX *= 0.5;
+				jumpY *= 0.5;
+			}
+			
 			_spriteMap.x += jumpX;
 			_spriteMap.y += jumpY;
 			
@@ -156,6 +163,13 @@ package net.mnml.entities.persons
 			_goingToNextWorld = true;
 			var worldStr : String = (e as WallToNewWorld).worldStr;
 			FP.world.add(new Fade(worldStr));
+		}
+		
+		public function setHalfScale():void
+		{
+			(graphic as Image).scale = 0.5;
+			//y += 80;
+			_halfScale = true;
 		}
 	}
 }

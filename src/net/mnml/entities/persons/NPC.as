@@ -19,7 +19,23 @@ package net.mnml.entities.persons
 		{
 			this.x = x;
 			this.y = y;
-			popupText = new PopupText(this);
+			
+			popupText = new PopupText(this, new Array(
+												"You look pale. Are you sick?",
+												"You need to leave, now.",
+												"Are you going to the mountain?",
+												"You need to leave, now.",
+												"Did you make the sun turn red?",
+												"You're going to kill us, aren't you?",
+												"Why has the sun turned red?",
+												"Please, leave us be.",
+												"You look sick.",
+												"You've come all this way to murder us?",
+												"Why are you doing this?",
+												"Please, don't go to the mountains.",
+												"The sun! You made it red as blood!",
+												"I can see death in your eyes."
+												));
 			FP.world.add(popupText);
 			
 			graphic = new Image(PERSON_NPC);

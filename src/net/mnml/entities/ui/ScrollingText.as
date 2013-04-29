@@ -1,17 +1,17 @@
 package net.mnml.entities.ui 
 {
 	import net.flashpunk.Entity;
-	import net.flashpunk.graphics.Text;
 	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Text;
+	
 	/**
 	 * ...
-	 * @author jams
+	 * @author Jams
 	 */
-	public class PopupText extends Entity
+	public class ScrollingText extends Entity
 	{
 		private var _text			:Text;
 		private var _possStrs		:Array;
-		private var _owner			:Entity;
 		
 		private var _started		:Boolean;
 		private var _chosenStr		:String;
@@ -21,14 +21,13 @@ package net.mnml.entities.ui
 		private var _visibleTimer	:uint;
 		
 		
-		public function PopupText(owner:Entity, possStrs:Array=null)
+		public function ScrollingText(possStrs:Array=null)
 		{
-			this._owner = owner;
+			x = 200;
+			y = 100;
 			this._possStrs = possStrs;
-			_text = new Text("null", _owner.x - 64, _owner.y - 64, { "alpha":0 } );
+			_text = new Text("null", 200, 100, { "alpha":0 } );
 			graphic = _text;
-			
-			//FP.world.add(this);
 			
 			_strs = possStrs;
 		}
@@ -39,9 +38,11 @@ package net.mnml.entities.ui
 			
 			if (_started)
 			{
+				_text.x = 200;
+				_text.y = 100;
 				
-				_text.x += (Math.random() * 4 - 2);
-				_text.y += (Math.random() * 4 - 2);
+				_text.x += (Math.random() * 2 - 1);
+				_text.y += (Math.random() * 2 - 1);
 				
 				// Turn up alpha & write string
 				if (_strIndex <= _chosenStr.length)
@@ -63,7 +64,7 @@ package net.mnml.entities.ui
 					{
 						if (_text.alpha <= 0)
 						{
-							_started = false;
+							startTextRead();
 						}
 						else
 							_text.alpha -= 0.025;
@@ -72,22 +73,16 @@ package net.mnml.entities.ui
 						_visibleTimer -= 1;
 				}
 			}
-			else
-			{
-				_text.x = _owner.x - 64;
-				_text.y = _owner.y - 32;
-			}
 		}
 		
 		public function startTextRead():void
 		{
-			if (_started == false)
-			{
-				_started = true;
-				_chosenStr = _strs[uint(Math.random() * _strs.length)];
-				_strIndex = 1;
-				_visibleTimer = 60;
-			}
+			_started = true;
+			_chosenStr = _strs[uint(Math.random() * _strs.length)];
+			_strIndex = 1;
+			_visibleTimer = 60;
 		}
+		
 	}
+
 }

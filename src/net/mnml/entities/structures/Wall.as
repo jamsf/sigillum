@@ -14,12 +14,13 @@ package net.mnml.entities.structures
 		
 		[Embed(source = '/../assets/sprites/spr_wall.png')] private const STRUCTURE_WALL:Class;
 		
-		public function Wall(x:int, y:int) 
+		public function Wall(x:int, y:int, invisible:Boolean=false) 
 		{
 			super();
 			this.x = x;
 			this.y = y;
-			graphic = new Image(STRUCTURE_WALL);
+			if(!invisible)
+				graphic = new Image(STRUCTURE_WALL);
 			setHitbox(64, 64);
 			this.collidable = true;
 			this.type = "Wall";

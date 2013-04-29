@@ -7,7 +7,7 @@ package net.mnml.entities.ui
 	 * ...
 	 * @author jams
 	 */
-	public class PopupText extends Entity
+	public class PriestText extends Entity
 	{
 		private var _text			:Text;
 		private var _possStrs		:Array;
@@ -21,7 +21,7 @@ package net.mnml.entities.ui
 		private var _visibleTimer	:uint;
 		
 		
-		public function PopupText(owner:Entity, possStrs:Array=null)
+		public function PriestText(owner:Entity, possStrs:Array=null)
 		{
 			this._owner = owner;
 			this._possStrs = possStrs;
@@ -64,6 +64,7 @@ package net.mnml.entities.ui
 						if (_text.alpha <= 0)
 						{
 							_started = false;
+							startTextRead();
 						}
 						else
 							_text.alpha -= 0.025;
@@ -90,4 +91,5 @@ package net.mnml.entities.ui
 			}
 		}
 	}
+
 }

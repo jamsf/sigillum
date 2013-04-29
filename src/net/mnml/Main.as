@@ -2,7 +2,14 @@ package net.mnml
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import net.mnml.entities.background.Mountain;
+	import net.mnml.entities.ui.TitleText;
+	import net.mnml.worlds.Ending;
+	import net.mnml.worlds.InsideTemple;
+	import net.mnml.worlds.MountainTrail;
 	import net.mnml.worlds.Title;
+	import net.mnml.worlds.PreGame;
+	import net.mnml.worlds.MountainBase;
 	
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
@@ -11,6 +18,7 @@ package net.mnml
 	
 	
 	import net.mnml.worlds.OutsideWorld;
+	import net.mnml.worlds.OutsideTemple;
 
 	/**
 	 * ...
@@ -22,8 +30,8 @@ package net.mnml
 		{
 			super(800, 600, 60, false);
 			
-			// Create a Bank world
-			FP.world = new OutsideWorld();
+			// Create initial world
+			FP.world = new PreGame();
 		}
 		
 		override public function init():void

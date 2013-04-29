@@ -6,15 +6,16 @@ package net.mnml.entities.background
 	 * ...
 	 * @author Jams
 	 */
-	public class Mountain extends Entity
+	public class Temple extends Entity
 	{
-		[Embed(source = '/../assets/sprites/spr_mountain.png')] private const MOUNTAIN:Class;
 		
-		public function Mountain(x:int, y:int) 
+		[Embed(source = '/../assets/sprites/temple.png')] private const TEMPLE:Class;
+		
+		public function Temple(x:int, y:int) 
 		{
 			this.x = x;
 			this.y = y;
-			graphic = new Image(MOUNTAIN);
+			graphic = new Image(TEMPLE);
 			(graphic as Image).centerOO();
 		}
 		

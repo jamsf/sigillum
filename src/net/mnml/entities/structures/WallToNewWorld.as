@@ -14,6 +14,7 @@ package net.mnml.entities.structures
 			super(x, y);
 			this.worldStr = world;
 			type = "WallToNewWorld";
+			graphic = null;
 		}
 		
 		override public function update():void 
