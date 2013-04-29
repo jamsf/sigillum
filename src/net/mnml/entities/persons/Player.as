@@ -68,7 +68,7 @@ package net.mnml.entities.persons
 		private function updateMovement():void
 		{
 			// Y axis movement
-			if (Input.check(Key.S))
+			if (Input.check(Key.S) || Input.check(Key.DOWN))
 			{
 				if (_yVel < 0)
 					_yVel += _decel;
@@ -80,7 +80,7 @@ package net.mnml.entities.persons
 						_yVel = _yMaxVel;
 				}
 			}
-			else if (Input.check(Key.W))
+			else if (Input.check(Key.W) || Input.check(Key.UP))
 			{
 				if (_yVel > 0)
 					_yVel -= _decel;
@@ -99,7 +99,7 @@ package net.mnml.entities.persons
 			}
 			
 			// X axis movement
-			if (Input.check(Key.D))
+			if (Input.check(Key.D) || Input.check(Key.RIGHT))
 			{
 				if (_xVel < 0)
 					_xVel += _decel;
@@ -111,7 +111,7 @@ package net.mnml.entities.persons
 						_xVel = _xMaxVel;
 				}
 			}
-			else if (Input.check(Key.A))
+			else if (Input.check(Key.A) || Input.check(Key.LEFT))
 			{
 				if (_xVel > 0)
 					_xVel -= _decel;
