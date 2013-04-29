@@ -68,6 +68,8 @@ package net.mnml.entities.ui
 					{
 						if (_text.alpha <= 0)
 						{
+							_text.x = _owner.x - 64;
+							_text.y = _owner.y - 32;
 							++_textIndex;
 							_started = false;
 							startTextRead();
