@@ -36,7 +36,7 @@ package net.mnml.entities.structures
 			setHitbox(64, 64);
 			this.collidable = true;
 			this.type = "Sigillum";
-			endingTimer = 120;
+			endingTimer = 180;
 			setCam = false;
 			
 			if (invisible)
@@ -59,14 +59,15 @@ package net.mnml.entities.structures
 					orgCamX = FP.camera.x;
 					orgCamY = FP.camera.y;
 					setCam = true;
+					FP.musicController.endsfx.play();
 				}
 			}
 				
 			if (ending)
 			{
 				--endingTimer;
-				var randX:int = (Math.random() ) * ((120-endingTimer)^2);
-				var randY:int = (Math.random() ) * ((120-endingTimer)^2);
+				var randX:int = (Math.random() ) * ((180-endingTimer)^2);
+				var randY:int = (Math.random() ) * ((180-endingTimer)^2);
 				
 				var xSgn : int = Math.random() > 0.5 ? 1 : -1;
 				var ySgn : int = Math.random() > 0.5 ? 1 : -1;

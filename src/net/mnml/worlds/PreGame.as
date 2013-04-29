@@ -24,7 +24,7 @@ package net.mnml.worlds
 			fade = new Fade("Title");
 			text = new ScrollingText(new Array( "press enter to continue",
 												"please press enter",
-												"make your final ascention",
+												"make your final ascension",
 												"press the enter key",
 												"you have been chosen",
 												"all that exists, ends",

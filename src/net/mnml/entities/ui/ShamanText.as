@@ -95,6 +95,7 @@ package net.mnml.entities.ui
 			}
 			else
 			{
+				FP.musicController.boomsfx.play();
 				var world:InsideTemple = FP.world as InsideTemple;
 				world.erasePrisoms();
 				world.sig.makeVisible();
