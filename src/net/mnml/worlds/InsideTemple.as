@@ -32,6 +32,12 @@ package net.mnml.worlds
 											"roooooozosozoooooorn" +
 											"romooooozozooooomorn" +
 											"roooooooozoooooooorn" +
+											"roooomooooooomoooorn" +
+											"rooooooooooooooooorn" +
+											"roooomooooooomoooorn" +
+											"rooooooooooooooooorn" +
+											"roooomooooooomoooorn" +
+											"rooooooooooooooooorn" +
 											"orooomooooooomoooron" +
 											"ooroooooooooooooroon" +
 											"ooorooooooooooorooon" +

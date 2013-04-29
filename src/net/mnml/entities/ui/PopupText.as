@@ -39,6 +39,7 @@ package net.mnml.entities.ui
 			
 			if (_started)
 			{
+				FP.world.bringToFront(this);
 				
 				_text.x += (Math.random() * 4 - 2);
 				_text.y += (Math.random() * 4 - 2);

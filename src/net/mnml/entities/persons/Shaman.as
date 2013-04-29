@@ -14,13 +14,19 @@ package net.mnml.entities.persons
 		[Embed(source = '/../assets/sprites/spr_shaman.png')] private const PERSON_NPC:Class;
 		
 		public var popupText	: ShamanText;
-		
 		private var startedText : Boolean;
+		
+		private var origX: int;
+		private var origY: int;
 		
 		public function Shaman(x:int, y:int) 
 		{
 			this.x = x;
 			this.y = y;
+			
+			origX = x;
+			origY = y;
+			
 			startedText = false;
 			
 			popupText = new ShamanText(this, new Array(
@@ -39,7 +45,7 @@ package net.mnml.entities.persons
 			FP.world.add(popupText);
 			
 			graphic = new Image(PERSON_NPC);
-			setHitbox(64, 64);
+			setHitbox(128, 128);
 		}
 		
 		override public function update():void 
@@ -51,6 +57,12 @@ package net.mnml.entities.persons
 				popupText.startTextRead();
 				startedText = true;
 			}
+			
+			var jumpX:Number = (Math.random() * 2 - 1);
+			var jumpY:Number = (Math.random() * 2 - 1);
+			
+			x = origX + jumpX;
+			y = origY + jumpY;
 		}
 	}
 }

@@ -15,10 +15,16 @@ package net.mnml.entities.persons
 		
 		public var popupText	:PopupText;
 		
+		private var origX: int;
+		private var origY: int;
+		
 		public function NPC(x:int, y:int) 
 		{
 			this.x = x;
 			this.y = y;
+			
+			origX = x;
+			origY = y;
 			
 			popupText = new PopupText(this, new Array(
 												"You look pale. Are you sick?",
@@ -39,7 +45,7 @@ package net.mnml.entities.persons
 			FP.world.add(popupText);
 			
 			graphic = new Image(PERSON_NPC);
-			setHitbox(64, 64);
+			setHitbox(128, 128);
 		}
 		
 		override public function update():void 
@@ -50,6 +56,12 @@ package net.mnml.entities.persons
 			{
 				popupText.startTextRead();
 			}
+			
+			var jumpX:Number = (Math.random() * 2 - 1);
+			var jumpY:Number = (Math.random() * 2 - 1);
+			
+			x = origX + jumpX;
+			y = origY + jumpY;
 		}
 	}
 
